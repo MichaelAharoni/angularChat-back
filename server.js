@@ -3,6 +3,7 @@ const app = express()
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const { setupSocketAPI } = require('./services/socket.service')
+const path = require('path')
 const http = require('http').createServer(app) /* surrounding http let us use WebSockets */
 
 if (process.env.NODE_ENV === 'production') {
