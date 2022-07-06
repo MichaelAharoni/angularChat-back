@@ -3,8 +3,9 @@ var gIo = null
 function setupSocketAPI(http) {
     gIo = require('socket.io')(http)
     gIo.on('connection', socket => {
-        socket.on('join-room', (roomId, userId) => {
+        socket.on('join-room', (roomId) => {
             socket.join(roomId)
+            console.log('JOINED ROOM '+roomId)
         })
         socket.on('check-socket', (str) => {
             socket.emit('check-socket', str)
