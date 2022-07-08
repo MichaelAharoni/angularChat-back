@@ -9,12 +9,10 @@ function setupSocketAPI(http) {
             console.log('JOINED ROOM '+roomId)
         })
         socket.on('store-candidate',(data)=>{
-
             gIo.to(socket.room).emit('got-candidate',data)
         })
-        socket.on('store-offer',(data)=>{gIo.to(socket.room).emit('got-offer',data)})
-        socket.on('store-answer',(data)=>{gIo.to(socket.room).emit('got-answer',data)})
-        socket.on('join-call',()=>{gIo.to(socket.room).emit('new-call')})
+        socket.on('store-offer',(data)=>{socket.to(socket.room).emit('got-offer',data)})
+        socket.on('store-answer',(data)=>{socket.to(socket.room).emit('got-answer',data)})
         socket.on('disconnect', socket => {
         })
     })
