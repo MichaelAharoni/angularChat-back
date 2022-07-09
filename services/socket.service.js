@@ -15,6 +15,12 @@ function setupSocketAPI(http) {
         socket.on('store-answer',(data)=>{socket.to(socket.room).emit('got-answer',data)})
         socket.on('disconnect', socket => {
         })
+        socket.on('send-user-details',(data)=>{
+            const {roomId,userId} = data
+            console.log(data)
+            gIo.to(roomId).emit('get-user-details',userId)
+            // socket.to(roomId).emit('get-user-details',userId)
+        })
     })
 }
 
